@@ -1,0 +1,38 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Daftar Pegawai</h1>
+<br>
+<a class="btn btn-success" href="{% url 'pegawai_tambah' %}">Tambah</a>
+<br><br>
+<table class="table table-striped"> 
+    <thead>
+        <tr>
+        <th>#</th>
+        <th>NIP</th>
+        <th>NAMA</th>
+        <th>Jenis Kelamin</th>
+        <th></td>
+        </tr>
+    </thead>
+    {% for pegawai_klinik in pegawai %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ pegawai_klinik.nip }}</td>
+        <td>{{ pegawai_klinik.nama }}</td>
+        <td>{% if pegawai_klinik.jenis_kelamin == 'L' %}
+                Laki - Laki
+            {% else %}
+                Perempuan
+            {% endif %}
+        </td>
+        <td>
+            <a class="btn btn-sm btn-warning" href="{% url 'pegawai_edit' pegawai_klinik.id %}">Edit</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'pegawai_hapus' pegawai_klinik.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

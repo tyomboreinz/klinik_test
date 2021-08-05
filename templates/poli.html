@@ -1,0 +1,29 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Daftar Poli</h1>
+<br>
+<a class="btn btn-success" href="{% url 'poli_tambah' %}">Tambah</a>
+<br><br>
+<table class="table table-striped"> 
+    <thead>
+        <tr>
+        <th>#</th>
+        <th>Nama Klinik</th>
+        <th></td>
+        </tr>
+    </thead>
+    {% for poli_klinik in poli %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ poli_klinik.nama }}</td>
+        <td>
+            <a class="btn btn-sm btn-warning" href="{% url 'poli_edit' poli_klinik.id %}">Edit</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'poli_hapus' poli_klinik.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+
+{% load static %}
+
+<html>
+
+<head>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sidebars.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Jadwal Dokter</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Klinik</th>
+                <th>Nama Dokter</th>
+                <th>Senin</th>
+                <th>Selasa</th>
+                <th>Rabu</th>
+                <th>Kamis</th>
+                <th>Jum'at</th>
+                <th>Sabtu</th>
+                <th>Minggu</th>
+                <th>
+                    </td>
+            </tr>
+        </thead>
+        {% for jadwal_dokter in jadwal %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ jadwal_dokter.poli }}</td>
+            <td>dr. {{ jadwal_dokter.nama }}</td>
+            <td>{% if jadwal_dokter.senin %}
+                {{ jadwal_dokter.senin }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.senin %}
+                {{ jadwal_dokter.senin }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.selasa %}
+                {{ jadwal_dokter.selasa }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.rabu %}
+                {{ jadwal_dokter.rabu }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.kamis %}
+                {{ jadwal_dokter.kamis }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.jumat %}
+                {{ jadwal_dokter.jumat }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.sabtu %}
+                {{ jadwal_dokter.sabtu }}
+                {% else %}
+                {% endif %}</td>
+            <td>{% if jadwal_dokter.minggu %}
+                {{ jadwal_dokter.minggu }}
+                {% else %}
+                {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/sidebars.js' %}"></script>
+</body>
+
+</html>
